@@ -54,9 +54,14 @@ ehthumbs.db
 # for non-coder contributors. Personal Claude state (sessions, settings, etc.) stays ignored.
 .graphify_*
 # ── Graphify ──────────────────────────────────────────────
-graphify-out/
+.graphify_*
 .graphify_python
 .graphify_root
+packages/graphify-out/cache/
+# Track specific graph output files under packages/ for README embedding
+!packages/graphify-out/graph.html
+!packages/graphify-out/graph.json
+!packages/graphify-out/GRAPH_REPORT.md
 growth/**
 # Holds app.sqlite (project metadata), projects/<id>/ (per-project artifacts,
 # ── IDE ────────────────────────────────────────────────────
