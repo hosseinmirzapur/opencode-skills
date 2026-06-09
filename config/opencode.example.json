@@ -1,0 +1,32 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "$comment": "Copy this file to ~/.config/opencode/opencode.json and fill in your providers.",
+  "agent": {
+    "akravonomist": {
+      "description": "Geopolitical, macroeconomic, and financial market intelligence. Monitors global developments and produces strategic analysis.",
+      "mode": "primary",
+      "model": "opencode/minimax-m3-free",
+      "permission": {
+        "webfetch": "allow",
+        "websearch": "allow",
+        "read": "allow",
+        "edit": "deny",
+        "write": "deny"
+      }
+    },
+    "laravel-simplifier": {
+      "description": "Simplifies and refines PHP/Laravel code for clarity, consistency, and maintainability. Applies Laravel conventions and PSR-12 standards. Use after a coding session to review and refine recent changes.",
+      "mode": "subagent",
+      "model": "opencode/deepseek-v4-flash-free",
+      "permission": {
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow",
+        "edit": "allow",
+        "write": "allow"
+      }
+    }
+  },
+  "disabled_providers": [],
+  "provider": {}
+}
