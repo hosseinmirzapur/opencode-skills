@@ -1,0 +1,46 @@
+# ── Credentials & Secrets ──────────────────────────────────
+opencode.json
+*.key
+*.pem
+.env
+.env.*
+.cred*
+**/secrets/**
+secrets/
+
+# ── Dependencies ───────────────────────────────────────────
+node_modules/
+package-lock.json
+.yarn/
+bun.lock
+.pnpm-store/
+
+# ── Python ─────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# ── Graphify ──────────────────────────────────────────────
+graphify-out/
+.graphify_*
+.graphify_python
+.graphify_root
+
+# ── OS files ───────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# ── IDE ────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

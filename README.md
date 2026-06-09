@@ -1,6 +1,34 @@
 # opencode-skills
 
-A collection of agent skills for [OpenCode](https://opencode.ai). Skills provide specialized instructions and workflows for common software engineering, marketing, design, and growth tasks.
+A collection of agent skills, agents, and plugins for [OpenCode](https://opencode.ai).
+
+## Quick start
+
+```bash
+# One-line install (auto-clones repo, runs interactive TUI installer):
+curl -fsSL https://raw.githubusercontent.com/hosseinmirzapur/opencode-skills/main/scripts/setup.py | python3
+
+# Or clone and run locally:
+git clone https://github.com/hosseinmirzapur/opencode-skills.git
+cd opencode-skills
+python3 scripts/setup.py
+```
+
+The installer will:
+- Install [graphify](https://graphifylabs.ai) (code knowledge graph)
+- Sync all skills, agents, and plugins into your opencode config
+- Prompt for API provider configuration
+- Register graphify with opencode
+
+## What's included
+
+| Component | Count | Location |
+|-----------|-------|----------|
+| Skills | 100 | `skills/` |
+| Agents | 2 | `agents/` |
+| Plugins | 1 | `plugins/` |
+| Config templates | 2 | `config/` |
+| Installer | 1 | `scripts/setup.py` |
 
 ## Skills
 
@@ -37,7 +65,7 @@ A collection of agent skills for [OpenCode](https://opencode.ai). Skills provide
 | executive-resume-writer | Create C-suite and VP level resumes emphasizing strategic leadership |
 | figma | Fetch design context, screenshots, and assets from Figma |
 | free-tools | Plan, evaluate, or build free marketing tools for lead generation |
-| frontend-design | Create production-grade frontend interfaces with strong visual direction |
+| graphify | Turn any codebase into a queryable knowledge graph with 71.5× token reduction |
 | gsap-core | Official GSAP skill for core animation API |
 | gsap-react | Official GSAP skill for React with useGSAP hook |
 | gstack-design-consultation | Create complete design systems and generate DESIGN.md |
