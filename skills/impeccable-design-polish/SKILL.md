@@ -1,7 +1,7 @@
 ---
 name: impeccable-design-polish
 description: |
-  Follow-up design polish skill. Use after a web or HTML artifact exists to audit, critique, polish, animate, harden, and prepare the page for a live/share pass.
+  Follow-up design polish skill inspired by Impeccable. Use after a web or HTML artifact exists to audit, critique, polish, animate, harden, and prepare the page for a live/share pass.
 triggers:
   - "impeccable"
   - "design polish"
@@ -11,10 +11,15 @@ triggers:
   - "animate page"
   - "harden ui"
   - "live review"
+  - "反 AI 味"
 od:
   mode: prototype
   surface: web
   platform: desktop
+  category: creative-direction
+  upstream: "https://github.com/pbakaus/impeccable"
+  preview:
+    type: html
   design_system:
     requires: true
   craft:
@@ -24,6 +29,8 @@ od:
       - anti-ai-slop
       - animation-discipline
       - accessibility-baseline
+  example_prompt: |
+    Use impeccable-design-polish on the current HTML artifact: audit visual hierarchy, remove AI tells, tighten copy, add restrained motion, and harden responsive/accessibility issues.
 ---
 
 # Impeccable Design Polish
@@ -56,6 +63,7 @@ Use this skill as the post-generation pass for an existing design. It should not
 
 ## Best Pairings
 
-- Pair with `frontend-design` for stronger anti-slop redesign work.
-- Pair with GSAP skills for motion-specific polish.
-- Pair with image skills when the artifact needs real visual assets rather than CSS-only decoration.
+- Pair with `design-taste-frontend` or `gpt-taste` for stronger anti-slop redesign work.
+- Pair with `emilkowalski-motion` or GSAP skills for motion-specific polish.
+- Pair with image/video skills when the artifact needs real visual assets rather than CSS-only decoration.
+

@@ -11,6 +11,7 @@ triggers:
   - "landing page"
   - "dashboard design"
   - "react component design"
+license: Complete terms in LICENSE.txt
 od:
   mode: prototype
   category: web-artifacts
@@ -20,9 +21,12 @@ od:
     requires: true
     sections: [color, typography, layout, components]
   example_prompt: "Design and build a production-quality SaaS analytics dashboard for a finance team, with real interaction states, refined typography, and a distinctive visual direction."
+  upstream: "https://github.com/anthropics/skills/tree/main/skills/frontend-design"
 ---
 
 # frontend-design
+
+> Adapted from Anthropic's official `frontend-design` skill for Open Design.
 
 Use this skill when the user asks to build or improve a frontend interface: a website, landing page, dashboard, application screen, HTML/CSS artifact, React/Vue/Svelte component, or a visual redesign of an existing UI.
 
@@ -52,11 +56,11 @@ The goal is not just "make it nicer." The goal is to ship working frontend code 
    - Use CSS variables for repeated colors, spacing, shadows, and type scale.
 
 5. Refine visual craft.
-   - **Typography**: choose expressive but readable type pairings. Avoid using default system stacks as the main visual idea unless the direction is intentionally utilitarian.
-   - **Color**: create a balanced palette with role clarity. Use accent color sparingly and deliberately.
-   - **Layout**: use alignment, rhythm, density, and negative space intentionally. Do not let cards, panels, or labels drift.
-   - **Motion**: add purposeful transitions for state changes, reveals, and feedback. Prefer transforms and opacity for performance.
-   - **Details**: use texture, borders, shadows, dividers, media, and iconography only when they support the concept.
+   - Typography: choose expressive but readable type pairings. Avoid using default system stacks as the main visual idea unless the direction is intentionally utilitarian.
+   - Color: create a balanced palette with role clarity. Use accent color sparingly and deliberately.
+   - Layout: use alignment, rhythm, density, and negative space intentionally. Do not let cards, panels, or labels drift.
+   - Motion: add purposeful transitions for state changes, reveals, and feedback. Prefer transforms and opacity for performance.
+   - Details: use texture, borders, shadows, dividers, media, and iconography only when they support the concept.
 
 6. Self-review before final delivery.
    - The interface works at mobile and desktop widths.
@@ -65,23 +69,17 @@ The goal is not just "make it nicer." The goal is to ship working frontend code 
    - The design avoids obvious AI-generated visual tropes.
    - The result has one memorable quality a user could describe after closing the page.
 
-## Anti-Patterns to Avoid
+## Open Design Integration
 
-- Purple-blue glow gradients with no product reason
-- Generic 3-card feature rows
-- Oversized rounded cards everywhere
-- Empty marketing adjectives
-- Inconsistent spacing and type scale
-- Decorative effects that do not support comprehension
-- Overused font families (Inter, Roboto, Arial, system fonts as primary identity)
-- Cliche color schemes (particularly purple gradients on white backgrounds)
-- Predictable layouts and component patterns
-- Cookie-cutter design that lacks context-specific character
+When Open Design provides an active design system, treat it as the product's brand contract. Use the injected color, typography, layout, and component guidance first, then apply this skill's frontend craft rules where the design system is silent.
 
-## Accessibility Baseline
+When Open Design injects craft references such as `typography`, `color`, and `anti-ai-slop`, apply those checks before finishing. If the user's brand guidance conflicts with a generic craft rule, the user's brand guidance wins.
 
-- Focus-visible outlines on all interactive elements
-- WCAG AA contrast ratio for all text
-- Reduced-motion media query for animations
-- Semantic HTML structure
-- Keyboard-navigable controls
+## Source
+
+- Upstream: https://github.com/anthropics/skills/tree/main/skills/frontend-design
+- Category: `web-artifacts`
+
+## License
+
+This skill is adapted from Anthropic's official skills repository. See `LICENSE.txt` in this folder for the upstream Apache-2.0 license terms.
