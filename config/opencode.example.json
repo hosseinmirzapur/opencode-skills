@@ -1,9 +1,10 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "$comment": "Copy this file to ~/.config/opencode/opencode.json and fill in your providers.",
+  "$comment": "Copy this file to ~/.config/opencode/opencode.json and customize.",
+  "plugin": ["superpowers@git+https://github.com/obra/superpowers.git"],
   "agent": {
     "akravonomist": {
-      "description": "Geopolitical, macroeconomic, and financial market intelligence. Monitors global developments and produces strategic analysis.",
+      "description": "Geopolitical, macroeconomic, and financial market intelligence. Monitors global developments, connects political events with economic outcomes, and produces strategic analysis and market signals. Integrated with Iran.skill — 119-file AI geopolitical analysis OS for Iran.",
       "mode": "primary",
       "model": "opencode/minimax-m3-free",
       "permission": {
