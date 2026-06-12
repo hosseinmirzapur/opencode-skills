@@ -3,7 +3,7 @@
     <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/opensourceinitiative.svg" width="0" />
     ⚡ opencode‑skills
   </h1>
-  <p><strong>The Ultimate Agent Skill Hub</strong> — <em>243 skills · 13 shared packages · 6 apps · 150+ design systems · full CI/CD</em></p>
+  <p><strong>The Ultimate Agent Skill Hub</strong> — <em>256 skills · 13 shared packages · 6 apps · 150+ design systems · full CI/CD</em></p>
   <p>A curated, batteries‑included collection of agent skills, automations, design systems, plugins, and full‑stack tooling for <a href="https://opencode.ai"><b>OpenCode</b></a> — now supercharged by the <a href="README-OPEN-DESIGN.md">Open Design</a> monorepo.</p>
 </div>
 
@@ -15,7 +15,7 @@
   <a href="TRANSLATIONS.md"><img src="https://img.shields.io/badge/i18n-18_languages-forestgreen?style=for-the-badge" alt="i18n" /></a>
   <br>
   <a href="AGENTS.md"><img src="https://img.shields.io/badge/agents-2_defined-6a0dad?style=flat-square" alt="agents" /></a>
-  <a href="skills/"><img src="https://img.shields.io/badge/skills-243-ff69b4?style=flat-square" alt="skills" /></a>
+  <a href="skills/"><img src="https://img.shields.io/badge/skills-256-ff69b4?style=flat-square" alt="skills" /></a>
   <a href="plugins/"><img src="https://img.shields.io/badge/plugins-200+-orange?style=flat-square" alt="plugins" /></a>
   <a href="design-systems/"><img src="https://img.shields.io/badge/design_systems-150+-brightgreen?style=flat-square" alt="design-systems" /></a>
   <a href="apps"><img src="https://img.shields.io/badge/apps-6-1e90ff?style=flat-square" alt="apps" /></a>
@@ -33,7 +33,7 @@ This repo started as a lightweight skill collection for OpenCode and grew into a
 
 | Layer | What's Here | Path |
 |-------|-------------|------|
-| 🤖 **Skills** | 243 ready‑to‑inject agent skills | [`skills/`](skills/) |
+| 🤖 **Skills** | 256 ready‑to‑inject agent skills | [`skills/`](skills/) |
 | 🧩 **Plugins** | Full plugin ecosystem (official, community, registry, spec) | [`plugins/`](plugins/) |
 | ⚙️ **Automations** | 42 TypeScript + Python build/release scripts | [`scripts/`](scripts/) |
 | 🏗️ **Apps** | 6 apps — daemon, web (Next.js 16), desktop (Electron), packaged, landing, telemetry worker | [`apps/`](apps/) |
@@ -74,7 +74,7 @@ osk --help             # Show all commands
 The installer will:
 - 📦 Install the **`osk` CLI** — your command center for everything in this repo
 - 🔗 Install [graphify](https://graphifylabs.ai) — queryable code knowledge graph with **71.5× token reduction**
-- 📥 Sync all **243 skills**, agents, and plugins into your OpenCode config
+- 📥 Sync all **256 skills**, agents, and plugins into your OpenCode config
 - 🔑 Prompt for API provider configuration
 - 🧠 Register graphify with OpenCode
 
@@ -128,7 +128,7 @@ The installer will:
 | [`design-brief`](skills/design-brief) | Parse I‑Lang briefs into concrete DESIGN.md specs |
 | [`design-shotgun`](skills/design-shotgun) | Generate 4–6 mockup variants and iterate on feedback |
 | [`design-consultation`](skills/design-consultation) | Create complete design systems and DESIGN.md docs |
-| [`design-md`](skills/design-md) | Generate DESIGN.md from design contracts |
+| [`design-md`](skills/design-md) | Collection of 70+ DESIGN.md files from popular brand design systems (awesome-design-md) |
 | [`design-review`](skills/design-review) | Systematic design review and critique |
 | [`figma`](skills/figma) | Fetch Figma context, screenshots, variables, assets |
 | [`figma-use`](skills/figma-use) | Translate Figma nodes into production code |
@@ -304,6 +304,19 @@ The installer will:
 | [`gpt-tasteskill`](skills/gpt-tasteskill) | Taste‑based GPT prompting |
 | [`taste-skill`](skills/taste-skill) | Design taste skill |
 | [`reference-design-contract`](skills/reference-design-contract) | Design contract management |
+| [`iran-skill`](skills/iran-skill) | Geopolitical intelligence OS — Iran, Middle East, strategic analysis |
+| [`receiving-code-review`](skills/receiving-code-review) | Process code review feedback with verification |
+| [`requesting-code-review`](skills/requesting-code-review) | Request code review before merging |
+| [`subagent-driven-development`](skills/subagent-driven-development) | Drive development through subagents |
+| [`systematic-debugging`](skills/systematic-debugging) | Systematic bug investigation before fixes |
+| [`test-driven-development`](skills/test-driven-development) | TDD workflow before implementation |
+| [`using-git-worktrees`](skills/using-git-worktrees) | Isolated workspace via git worktrees |
+| [`verification-before-completion`](skills/verification-before-completion) | Verify before claiming completion |
+| [`writing-plans`](skills/writing-plans) | Write multi-step implementation plans |
+| [`writing-skills`](skills/writing-skills) | Create and test agent skills |
+| [`dispatching-parallel-agents`](skills/dispatching-parallel-agents) | Dispatch parallel agents for independent tasks |
+| [`executing-plans`](skills/executing-plans) | Execute plans in isolated sessions |
+| [`finishing-a-development-branch`](skills/finishing-a-development-branch) | Complete branches with PR/merge/cleanup |
 </details>
 
 <br>
@@ -338,7 +351,7 @@ opencode-skills/
 ├── 📁 plugins/                # Plugin ecosystem (spec, registry, 200+ plugins)
 ├── 📁 prompt-templates/       # AI prompt templates (image, video)
 ├── 📁 scripts/                # 42+ automation scripts
-├── 📁 skills/                 # 243 agent skills
+├── 📁 skills/                 # 256 agent skills
 ├── 📁 specs/                  # Architecture specs & change documents
 ├── 📁 story/                  # Project origin story
 ├── 📁 templates/              # HTML framework templates
@@ -362,7 +375,7 @@ opencode-skills/
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  Skills       243   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100%
+  Skills       256   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100%
   Plugins      200+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100%
   Packages      13   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100%
   Apps           6   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━-------------  80%
