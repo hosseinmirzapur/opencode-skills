@@ -1,0 +1,25 @@
+[project]
+name = "osk"
+version = "1.0.0"
+description = "OpenCode Skills — the ultimate agent skill hub CLI"
+license = { text = "Apache-2.0" }
+requires-python = ">=3.10"
+dependencies = [
+    "rich>=13.0.0",
+    "click>=8.1.0",
+    "pyfiglet>=1.0.0",
+]
+optional-dependencies = {
+    "tui": ["textual>=2.0.0"],
+}
+
+[project.scripts]
+osk = "osk.cli:main"
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["osk*"]
