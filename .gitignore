@@ -62,6 +62,11 @@ packages/graphify-out/cache/
 !packages/graphify-out/graph.html
 !packages/graphify-out/graph.json
 !packages/graphify-out/GRAPH_REPORT.md
+skills/graphify-out/cache/
+# Track specific graph output files under skills/ for knowledge graph embedding
+!skills/graphify-out/graph.html
+!skills/graphify-out/graph.json
+!skills/graphify-out/GRAPH_REPORT.md
 growth/**
 # Holds app.sqlite (project metadata), projects/<id>/ (per-project artifacts,
 # ── IDE ────────────────────────────────────────────────────
