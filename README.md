@@ -54,16 +54,25 @@ This repo started as a lightweight skill collection for OpenCode and grew into a
 ## ⚡ Quick Start
 
 ```bash
-# One‑line install (clones + interactive TUI):
+# One‑line install (bootstraps + launches the wizard):
 curl -fsSL https://raw.githubusercontent.com/hosseinmirzapur/opencode-skills/main/scripts/setup.py | python3
 
 # Or clone manually:
 git clone https://github.com/hosseinmirzapur/opencode-skills.git
 cd opencode-skills
 python3 scripts/setup.py
+
+# After install, use the `osk` CLI:
+osk                    # Full‑screen interactive TUI dashboard
+osk status             # Check installation status
+osk install all        # Install everything
+osk install graphify   # Install graphify only
+osk doctor             # Diagnose your setup
+osk --help             # Show all commands
 ```
 
 The installer will:
+- 📦 Install the **`osk` CLI** — your command center for everything in this repo
 - 🔗 Install [graphify](https://graphifylabs.ai) — queryable code knowledge graph with **71.5× token reduction**
 - 📥 Sync all **243 skills**, agents, and plugins into your OpenCode config
 - 🔑 Prompt for API provider configuration
