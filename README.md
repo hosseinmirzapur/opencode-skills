@@ -3,7 +3,7 @@
     <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/opensourceinitiative.svg" width="0" />
     ⚡ opencode‑skills
   </h1>
-  <p><strong>The Ultimate Agent Skill Hub</strong> — <em>256 skills · 13 shared packages · 6 apps · 150+ design systems · full CI/CD</em></p>
+  <p><strong>The Ultimate Agent Skill Hub</strong> — <em>322 skills · 13 shared packages · 6 apps · 150+ design systems · full CI/CD</em></p>
   <p>A curated, batteries‑included collection of agent skills, automations, design systems, plugins, and full‑stack tooling for <a href="https://opencode.ai"><b>OpenCode</b></a> — now supercharged by the <a href="README-OPEN-DESIGN.md">Open Design</a> monorepo.</p>
 </div>
 
@@ -15,7 +15,7 @@
   <a href="TRANSLATIONS.md"><img src="https://img.shields.io/badge/i18n-18_languages-forestgreen?style=for-the-badge" alt="i18n" /></a>
   <br>
   <a href="AGENTS.md"><img src="https://img.shields.io/badge/agents-2_defined-6a0dad?style=flat-square" alt="agents" /></a>
-  <a href="skills/"><img src="https://img.shields.io/badge/skills-256-ff69b4?style=flat-square" alt="skills" /></a>
+  <a href="skills/"><img src="https://img.shields.io/badge/skills-322-ff69b4?style=flat-square" alt="skills" /></a>
   <a href="plugins/"><img src="https://img.shields.io/badge/plugins-200+-orange?style=flat-square" alt="plugins" /></a>
   <a href="design-systems/"><img src="https://img.shields.io/badge/design_systems-150+-brightgreen?style=flat-square" alt="design-systems" /></a>
   <a href="apps"><img src="https://img.shields.io/badge/apps-6-1e90ff?style=flat-square" alt="apps" /></a>
@@ -33,7 +33,7 @@ This repo started as a lightweight skill collection for OpenCode and grew into a
 
 | Layer | What's Here | Path |
 |-------|-------------|------|
-| 🤖 **Skills** | 256 ready‑to‑inject agent skills | [`skills/`](skills/) |
+| 🤖 **Skills** | 322 ready‑to‑inject agent skills | [`skills/`](skills/) |
 | 🧩 **Plugins** | Full plugin ecosystem (official, community, registry, spec) | [`plugins/`](plugins/) |
 | ⚙️ **Automations** | 42 TypeScript + Python build/release scripts | [`scripts/`](scripts/) |
 | 🏗️ **Apps** | 6 apps — daemon, web (Next.js 16), desktop (Electron), packaged, landing, telemetry worker | [`apps/`](apps/) |
@@ -74,7 +74,7 @@ osk --help             # Show all commands
 The installer will:
 - 📦 Install the **`osk` CLI** — your command center for everything in this repo
 - 🔗 Install [graphify](https://graphifylabs.ai) — queryable code knowledge graph with **71.5× token reduction**
-- 📥 Sync all **256 skills**, agents, and plugins into your OpenCode config
+- 📥 Sync all **322 skills**, agents, and plugins into your OpenCode config
 - 🔑 Prompt for API provider configuration
 - 🧠 Register graphify with OpenCode
 
@@ -319,6 +319,79 @@ The installer will:
 | [`finishing-a-development-branch`](skills/finishing-a-development-branch) | Complete branches with PR/merge/cleanup |
 </details>
 
+<details>
+<summary><b>🧑‍💻 Full-Stack Development (Jeffallan Collection)</b> — <i>66 expert language, framework, infra, and security skills</i></summary>
+
+| Skill | What It Does |
+|-------|-------------|
+| [`angular-architect`](skills/angular-architect) | Angular component architecture, state, RxJS, performance |
+| [`api-designer`](skills/api-designer) | REST/GraphQL API design, versioning, documentation |
+| [`architecture-designer`](skills/architecture-designer) | System architecture, trade-offs, scalability patterns |
+| [`atlassian-mcp`](skills/atlassian-mcp) | Atlassian MCP server integration for Jira/Confluence |
+| [`chaos-engineer`](skills/chaos-engineer) | Chaos engineering, fault injection, resilience testing |
+| [`cli-developer`](skills/cli-developer) | Build CLI tools, argument parsing, terminal UX |
+| [`cloud-architect`](skills/cloud-architect) | Multi-cloud architecture, migration, cost optimization |
+| [`code-documenter`](skills/code-documenter) | Generate documentation from code, API references |
+| [`code-reviewer`](skills/code-reviewer) | Code review best practices, patterns, and standards |
+| [`cpp-pro`](skills/cpp-pro) | Modern C++ (17/20/23), STL, memory management |
+| [`csharp-developer`](skills/csharp-developer) | C# 12+, .NET ecosystem, LINQ, async patterns |
+| [`database-optimizer`](skills/database-optimizer) | Query optimization, indexing, schema design, migrations |
+| [`debugging-wizard`](skills/debugging-wizard) | Systematic debugging, root cause analysis, profiling |
+| [`devops-engineer`](skills/devops-engineer) | CI/CD, GitOps, release engineering, automation |
+| [`django-expert`](skills/django-expert) | Django models, views, DRF, ORM, async, testing |
+| [`dotnet-core-expert`](skills/dotnet-core-expert) | .NET Core, ASP.NET Core, Entity Framework, gRPC |
+| [`embedded-systems`](skills/embedded-systems) | Embedded C/C++, RTOS, microcontroller programming |
+| [`fastapi-expert`](skills/fastapi-expert) | FastAPI, Pydantic V2, async, dependency injection |
+| [`feature-forge`](skills/feature-forge) | Feature development workflow, spec-to-ship |
+| [`fine-tuning-expert`](skills/fine-tuning-expert) | LLM fine-tuning, LoRA, RLHF, dataset preparation |
+| [`flutter-expert`](skills/flutter-expert) | Flutter widgets, state management, Dart, platform channels |
+| [`fullstack-guardian`](skills/fullstack-guardian) | Full-stack integration, data flow, consistency |
+| [`game-developer`](skills/game-developer) | Game development patterns, engines, optimization |
+| [`golang-pro`](skills/golang-pro) | Go concurrency, interfaces, testing, profiling |
+| [`graphql-architect`](skills/graphql-architect) | GraphQL schema, resolvers, federation, security |
+| [`java-architect`](skills/java-architect) | Java 21+, Spring ecosystem, JVM performance |
+| [`javascript-pro`](skills/javascript-pro) | Modern JS (ES2024+), async, modules, tooling |
+| [`kotlin-specialist`](skills/kotlin-specialist) | Kotlin coroutines, flows, multiplatform, Android |
+| [`kubernetes-specialist`](skills/kubernetes-specialist) | K8s operators, Helm, service mesh, cluster ops |
+| [`laravel-specialist`](skills/laravel-specialist) | Laravel Eloquent, Livewire, queues, testing |
+| [`legacy-modernizer`](skills/legacy-modernizer) | Legacy code modernization, migration strategies |
+| [`mcp-developer`](skills/mcp-developer) | MCP server development, tools, resources, prompts |
+| [`microservices-architect`](skills/microservices-architect) | Microservices decomposition, comms, observability |
+| [`ml-pipeline`](skills/ml-pipeline) | ML/MLOps pipelines, feature stores, model serving |
+| [`monitoring-expert`](skills/monitoring-expert) | Observability, metrics, tracing, alerting, dashboards |
+| [`nestjs-expert`](skills/nestjs-expert) | NestJS modules, guards, interceptors, GraphQL, testing |
+| [`nextjs-developer`](skills/nextjs-developer) | Next.js App Router, RSC, server actions, ISR |
+| [`pandas-pro`](skills/pandas-pro) | Pandas data manipulation, groupby, performance tuning |
+| [`php-pro`](skills/php-pro) | Modern PHP 8.3+, OOP, Composer, frameworks |
+| [`playwright-expert`](skills/playwright-expert) | Playwright E2E testing, codegen, CI integration |
+| [`postgres-pro`](skills/postgres-pro) | PostgreSQL advanced features, tuning, replication |
+| [`prompt-engineer`](skills/prompt-engineer) | Prompt engineering techniques, chain-of-thought |
+| [`python-pro`](skills/python-pro) | Modern Python 3.12+, typing, async, packaging |
+| [`rag-architect`](skills/rag-architect) | RAG systems, vector stores, embedding pipelines |
+| [`rails-expert`](skills/rails-expert) | Rails 7+, ActiveRecord, Hotwire, Turbo, testing |
+| [`react-expert`](skills/react-expert) | React 19, hooks, Suspense, server components |
+| [`react-native-expert`](skills/react-native-expert) | React Native, Expo, navigation, native modules |
+| [`rust-engineer`](skills/rust-engineer) | Rust ownership, borrow checker, async, FFI |
+| [`salesforce-developer`](skills/salesforce-developer) | Apex, SOQL, LWC, Salesforce integrations |
+| [`secure-code-guardian`](skills/secure-code-guardian) | OWASP, auth, input validation, encryption |
+| [`security-reviewer`](skills/security-reviewer) | SAST, penetration testing, compliance audits |
+| [`shopify-expert`](skills/shopify-expert) | Shopify Liquid, themes, apps, Storefront API |
+| [`spark-engineer`](skills/spark-engineer) | Apache Spark, PySpark, streaming, optimization |
+| [`spec-miner`](skills/spec-miner) | Extract specs from code, requirements tracing |
+| [`spring-boot-engineer`](skills/spring-boot-engineer) | Spring Boot 3+, security, data, cloud, testing |
+| [`sql-pro`](skills/sql-pro) | Advanced SQL, window functions, CTEs, query tuning |
+| [`sre-engineer`](skills/sre-engineer) | SRE practices, SLI/SLO, incident response |
+| [`swift-expert`](skills/swift-expert) | Swift, SwiftUI, async/await, Combine, Xcode |
+| [`terraform-engineer`](skills/terraform-engineer) | Terraform, HCL, modules, state management |
+| [`test-master`](skills/test-master) | Testing strategies, unit/integration/E2E, mocks |
+| [`the-fool`](skills/the-fool) | Creative exploration, unconventional approaches |
+| [`typescript-pro`](skills/typescript-pro) | TypeScript 5.x, advanced types, generics, tooling |
+| [`vue-expert`](skills/vue-expert) | Vue 3, Composition API, Pinia, Vite |
+| [`vue-expert-js`](skills/vue-expert-js) | Vue 3 (JavaScript), Composition API, ecosystem |
+| [`websocket-engineer`](skills/websocket-engineer) | WebSocket protocols, real-time, reconnection |
+| [`wordpress-pro`](skills/wordpress-pro) | WordPress, blocks, REST API, WooCommerce, plugins |
+</details>
+
 <br>
 
 ---
@@ -351,7 +424,7 @@ opencode-skills/
 ├── 📁 plugins/                # Plugin ecosystem (spec, registry, 200+ plugins)
 ├── 📁 prompt-templates/       # AI prompt templates (image, video)
 ├── 📁 scripts/                # 42+ automation scripts
-├── 📁 skills/                 # 256 agent skills
+├── 📁 skills/                 # 322 agent skills
 ├── 📁 specs/                  # Architecture specs & change documents
 ├── 📁 story/                  # Project origin story
 ├── 📁 templates/              # HTML framework templates
@@ -375,7 +448,7 @@ opencode-skills/
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  Skills       256   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100%
+  Skills       322   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100%
   Plugins      200+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100%
   Packages      13   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100%
   Apps           6   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━-------------  80%
