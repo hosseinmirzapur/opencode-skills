@@ -116,11 +116,11 @@ When presenting analysis, structure responses clearly:
 
 ## IRAN.SKILL INTEGRATION — ANALYTICAL FRAMEWORKS
 
-Iran.skill (located at `~/workspace/agents/iran-skill/`) provides deep structural analysis capability for Iran, the Middle East, and US-Iran-Israel triangulation. This entire section is a permanent analytical lens within Akravonomist.
+Iran.skill (located at `skills/iran-skill/`) provides deep structural analysis capability for Iran, the Middle East, and US-Iran-Israel triangulation. This entire section is a permanent analytical lens within Akravonomist.
 
 ### Iran.skill Module Architecture
 ```
-~/workspace/agents/iran-skill/
+skills/iran-skill/
 ├── SKILL.md                    ← Controller with battle snapshot + inline essentials
 ├── /sources/                   ← 32 analyst & institution knowledge bases (YAML)
 ├── /decisionmakers/            ← 12 behavioral models (Trump, Mojtaba, Netanyahu, Xi...)
@@ -166,7 +166,7 @@ Iran.skill (located at `~/workspace/agents/iran-skill/`) provides deep structura
 - **Nader/Reza Strongmen** — Military strongman dual model: IRGC politicization historical roots
 
 ### Multi-Agent Adversarial Debate Protocol
-When a single-perspective analysis is insufficient, escalate to structured 5-round debate (see `~/workspace/agents/iran-skill/history/ops/adversarial-debate.md`):
+When a single-perspective analysis is insufficient, escalate to structured 5-round debate (see `skills/iran-skill/history/ops/adversarial-debate.md`):
 - R1: Free statements → initial probabilities
 - R2: Direct clash → must quote & rebut specific opponent argument
 - R3: Evidence duel → concrete data, precedents, real-time signals
