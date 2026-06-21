@@ -1,109 +1,133 @@
 """
-Kronos Model Inference for Crypto Algo Trader
-Uses HuggingFace Kronos foundation model for candlestick pattern prediction.
-Model: shiyu-coder/Kronos (AAAI 2026 accepted)
+Chronos-Tiny Predictor for Crypto Algo Trader
+Uses Amazon Chronos-Tiny foundation model for time series forecasting.
+Model: amazon/chronos-tiny (~80MB, runs on CPU)
 """
 
-import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer
-from typing import Dict, Any, List
 import numpy as np
+from typing import Dict, Any, List
 
 
-class KronosPredictor:
+class ChronosPredictor:
     """
-    Kronos Foundation Model for Crypto Candlestick Prediction.
-    Pre-trained on 45+ exchanges of candlestick data.
-    Achieves 58-65% directional accuracy on hourly crypto forecasts.
+    Chronos-Tiny Foundation Model for Crypto Price Prediction.
+    Lightweight time series forecasting model from Amazon.
+    Pre-trained on diverse time series data including financial data.
     """
-    
-    def __init__(self, model_name: str = 'shiyu-coder/Kronos'):
-        self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
+
+    def __init__(self, model_name: str = 'amazon/chronos-tiny'):
+        self.model_name = model_name
+        self.pipeline = None
         try:
-            self.tokenizer = AutoTokenizer.from_pretrained(model_name)
-            self.model = AutoModelForCausalLM.from_pretrained(model_name)
-            self.model.to(self.device)
+            from chronos import ChronosPipeline
+            self.pipeline = ChronosPipeline.from_pretrained(
+                model_name,
+                device_map='auto',
+                torch_dtype='auto'
+            )
+        except ImportError:
+            print("chronos package not installed. Install with: pip install chronos-forecast")
         except Exception as e:
-            print(f"Model loading fallback: {e}")
-            self.model = None
-            self.tokenizer = None
-    
-    def tokenize_ohlcv(self, ohlcv_sequence: List[Dict]) -> str:
-        """
-        Convert OHLCV sequence to Kronos tokens.
-        Uses custom tokenizer for candlestick patterns.
-        """
-        # Simplified tokenization - in production use Kronos's actual tokenizer
-        tokens = []
-        for candle in ohlcv_sequence[-60:]:  # Last 60 candles
-            o, h, l, c, v = candle['open'], candle['high'], candle['low'], candle['close'], candle['volume']
-            body = c - o
-            upper = h - max(o, c)
-            lower = min(o, c) - l
-            tokens.append(f"Candle(body={body:.2f}, upper={upper:.2f}, lower={lower:.2f})")
-        return " ".join(tokens)
-    
+            print(f"Chronos model loading fallback: {e}")
+
     def predict_direction(self, ohlcv_sequence: List[Dict]) -> Dict[str, Any]:
         """
         Predict price direction (UP/DOWN/SIDEWAYS).
-        
+
         Returns:
         - direction: 'UP', 'DOWN', or 'SIDEWAYS'
         - confidence: 0-1 confidence score
         """
-        if self.model is None:
-            # Fallback: simple momentum
-            prices = [c['close'] for c in ohlcv_sequence[-20:]]
-            momentum = (prices[-1] - prices[0]) / prices[0]
-            if momentum > 0.02:
-                return {'direction': 'UP', 'confidence': 0.6}
-            elif momentum < -0.02:
-                return {'direction': 'DOWN', 'confidence': 0.6}
-            else:
-                return {'direction': 'SIDEWAYS', 'confidence': 0.55}
-        
-        # Tokenize and predict
-        tokens = self.tokenize_ohlcv(ohlcv_sequence)
-        inputs = self.tokenizer(tokens, return_tensors='pt').to(self.device)
-        
-        with torch.no_grad():
-            outputs = self.model.generate(
-                **inputs,
-                max_new_tokens=10,
-                do_sample=True,
-                temperature=0.7
+        prices = np.array([c['close'] for c in ohlcv_sequence[-120:]], dtype=np.float32)
+
+        if self.pipeline is None:
+            return self._momentum_fallback(prices)
+
+        try:
+            import torch
+            context = torch.tensor(prices).unsqueeze(0)
+            forecast = self.pipeline.predict(
+                context=context,
+                prediction_length=12,
+                num_samples=20
             )
-        
-        prediction = self.tokenizer.decode(outputs[0], skip_special_tokens=True)
-        
-        # Parse direction from output
-        if 'UP' in prediction.upper():
-            direction = 'UP'
-        elif 'DOWN' in prediction.upper():
-            direction = 'DOWN'
+
+            median_forecast = forecast.squeeze().median(dim=0).values.numpy()
+            current_price = prices[-1]
+            predicted_price = float(median_forecast[-1])
+            pct_change = (predicted_price - current_price) / current_price
+
+            if pct_change > 0.005:
+                direction = 'UP'
+                confidence = min(0.5 + abs(pct_change) * 10, 0.85)
+            elif pct_change < -0.005:
+                direction = 'DOWN'
+                confidence = min(0.5 + abs(pct_change) * 10, 0.85)
+            else:
+                direction = 'SIDEWAYS'
+                confidence = 0.55
+
+            return {'direction': direction, 'confidence': round(confidence, 2)}
+
+        except Exception as e:
+            print(f"Chronos prediction error: {e}")
+            return self._momentum_fallback(prices)
+
+    def _momentum_fallback(self, prices: np.ndarray) -> Dict[str, Any]:
+        """Fallback: simple momentum when model unavailable."""
+        if len(prices) < 20:
+            return {'direction': 'SIDEWAYS', 'confidence': 0.5}
+
+        recent = prices[-20:]
+        momentum = (recent[-1] - recent[0]) / recent[0]
+
+        if momentum > 0.02:
+            return {'direction': 'UP', 'confidence': 0.6}
+        elif momentum < -0.02:
+            return {'direction': 'DOWN', 'confidence': 0.6}
         else:
-            direction = 'SIDEWAYS'
-        
-        confidence = 0.65 + np.random.random() * 0.1  # Simulated
-        
-        return {'direction': direction, 'confidence': round(confidence, 2)}
-    
+            return {'direction': 'SIDEWAYS', 'confidence': 0.55}
+
     def predict_4h_range(self, ohlcv_sequence: List[Dict]) -> Dict[str, float]:
         """
         Predict 4-hour price range.
         Returns low and high bounds.
         """
-        current_price = ohlcv_sequence[-1]['close']
-        volatility = np.std([(c['high'] - c['low']) / c['close'] for c in ohlcv_sequence[-20:]])
-        
-        range_percent = volatility * 2  # Approximate 4h range
-        
-        return {
-            'low': current_price * (1 - range_percent),
-            'high': current_price * (1 + range_percent)
-        }
+        prices = np.array([c['close'] for c in ohlcv_sequence[-120:]], dtype=np.float32)
+        current_price = prices[-1]
+
+        if self.pipeline is None:
+            volatility = np.std(np.diff(prices[-20:]) / prices[-20:-1])
+            range_percent = volatility * 2
+            return {
+                'low': current_price * (1 - range_percent),
+                'high': current_price * (1 + range_percent)
+            }
+
+        try:
+            import torch
+            context = torch.tensor(prices).unsqueeze(0)
+            forecast = self.pipeline.predict(
+                context=context,
+                prediction_length=12,
+                num_samples=20
+            )
+
+            all_samples = forecast.squeeze().numpy()
+            low = float(np.percentile(all_samples[:, -1], 5))
+            high = float(np.percentile(all_samples[:, -1], 95))
+
+            return {'low': low, 'high': high}
+
+        except Exception:
+            volatility = np.std(np.diff(prices[-20:]) / prices[-20:-1])
+            range_percent = volatility * 2
+            return {
+                'low': current_price * (1 - range_percent),
+                'high': current_price * (1 + range_percent)
+            }
 
 
 if __name__ == '__main__':
-    predictor = KronosPredictor()
-    print("Kronos predictor ready for inference")
+    predictor = ChronosPredictor()
+    print("Chronos-Tiny predictor ready for inference")

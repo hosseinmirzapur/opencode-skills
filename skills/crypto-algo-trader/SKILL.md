@@ -12,7 +12,7 @@ description: Use when generating professional algorithmic trading signals for cr
 ## When To Use
 
 - User wants trading signals for BTC or ETH with entry price, stop loss, take profit, and position sizing
-- Need ML-powered price predictions using state-of-the-art models (Kronos, XGBoost, LSTM)
+- Need ML-powered price predictions using lightweight models (Chronos-Tiny, XGBoost)
 - Want to combine technical analysis, sentiment, and market microstructure signals
 - Require paper trading or backtesting before live execution
 - Risk management is critical (Kelly criterion, VaR, Monte Carlo simulations)
@@ -83,37 +83,33 @@ Before any signal, classify the market state:
 | **Schaff Trend Cycle** | Faster MACD-like signal | Trend changes |
 | **Chandelier Exit** | Volatility stop | Risk reference |
 
-### 2b. ML Ensemble Signals
+### 2b. ML Ensemble Signals (Lightweight)
 
 | Model | Framework | Output |
 |-------|-----------|--------|
 | **XGBoost + Bayesian Opt** | Feature-based | Buy/Sell/Hold + confidence |
-| **LSTM with Attention** | Sequence modeling | Next price direction |
-| **Temporal Fusion Transformer** | Multi-horizon | Probabilistic forecast |
-| **LightGBM Quantile** | Uncertainty | Price range (5th–95th) |
-| **Stacking Ensemble** | Meta-learner | Weighted signal combination |
 
-**Features used:** OHLCV, returns, volume, technical indicators, on-chain metrics, sentiment, macro data.
+**Features used:** OHLCV, returns, volume, technical indicators, RSI, MACD, ATR, lag features, rolling volatility.
 
-### 2c. Kronos Foundation Model (HF: shiyu-coder/Kronos)
+### 2c. Chronos-Tiny Forecasting (HF: amazon/chronos-tiny)
 
-- Pre-trained on 45+ exchanges of candlestick data
-- Tokenizer converts OHLCV to discrete tokens
-- Direction prediction with 58-65% accuracy on hourly crypto
-- Used as primary directional signal
+- Amazon's lightweight time series foundation model (~80MB)
+- Runs on CPU — no GPU required
+- Predicts 12-step ahead price direction with quantile estimates
+- Fallback to momentum analysis if model unavailable
 - **See `scripts/kronos_predict.py`**
 
-### 2d. Sentiment Signals (HF Models)
+### 2d. Sentiment Signals (VADER + TextBlob)
 
-| Model | Specialization |
-|-------|----------------|
-| **kk08/CryptoBERT** | Crypto-specific sentiment |
-| **ProsusAI/finbert** | Financial sentiment (fallback) |
+| Tool | Specialization |
+|------|----------------|
+| **VADER** | Rule-based, optimized for social media text |
+| **TextBlob** | Pattern-based sentiment with subjectivity |
 
 Process:
 1. Fetch headlines, tweets, Reddit posts
-2. Run through CryptoBERT
-3. Aggregate hourly sentiment index
+2. Analyze with VADER (primary) + TextBlob (confirmation)
+3. Aggregate hourly sentiment index (-1 bearish to +1 bullish)
 4. Detect divergence: price up + sentiment down = reversal
 
 ### 2e. Multi-Timeframe Confluence
@@ -229,12 +225,11 @@ Position-based:
   "regime": "TRENDING_UP",
   "timeframe": "1h",
   "signals": {
-    "kronos": {"direction": "UP", "confidence": 0.68},
+    "chronos": {"direction": "UP", "confidence": 0.68},
     "xgboost": {"direction": "UP", "confidence": 0.71},
-    "lstm": {"direction": "UP", "confidence": 0.65},
     "technical": {"direction": "UP", "confidence": 0.60}
   },
-  "reasoning": "Kronos (68%), XGBoost (71%), LSTM (65%) all agree on bullish direction...",
+  "reasoning": "Chronos (68%), XGBoost (71%), Technical (60%) agree on bullish direction...",
   "timestamp": "2026-06-22T01:00:00Z"
 }
 ```
@@ -248,9 +243,9 @@ scripts/
   data_pipeline.py        # OHLCV, news, on-chain data fetch
   regime_detector.py      # HMM + Hurst + Liquidity detection
   ta_signals.py          # Technical indicators (TA-Lib)
-  ml_ensemble.py         # XGBoost + LSTM + TFT training/inference
-  kronos_predict.py      # HF Kronos model inference
-  sentiment.py           # CryptoBERT sentiment analysis
+  ml_ensemble.py         # XGBoost training/inference (lightweight)
+  kronos_predict.py      # Chronos-Tiny forecasting (~80MB, CPU-only)
+  sentiment.py           # VADER + TextBlob sentiment (<1MB, no GPU)
   risk_manager.py        # Kelly, VaR, Monte Carlo, circuit breakers
   backtest_engine.py     # Walk-forward, purged CV, metrics
   config.yaml           # Parameters file
@@ -259,15 +254,14 @@ scripts/
 
 ---
 
-## 7. HuggingFace Models Reference
+## 7. Model Reference
 
-| Model | Use Case | HF Link |
-|-------|----------|---------|
-| **shiyu-coder/Kronos** | Candlestick pattern prediction | https://huggingface.co/shiyu-coder/Kronos |
-| **kk08/CryptoBERT** | Crypto sentiment analysis | https://huggingface.co/kk08/CryptoBERT |
-| **ProsusAI/finbert** | Financial sentiment (fallback) | https://huggingface.co/ProsusAI/finbert |
-| **amazon/chronos-2** | Time series forecasting | https://huggingface.co/amazon/chronos-2 |
-| **ibm-granite/TTM-R1** | Time series transformer | https://huggingface.co/ibm-granite/TTM-R1 |
+| Model/Tool | Use Case | Link |
+|------------|----------|------|
+| **amazon/chronos-tiny** | Time series forecasting (~80MB, CPU) | https://huggingface.co/amazon/chronos-tiny |
+| **VADER** | Social media sentiment (rule-based) | pip install vaderSentiment |
+| **TextBlob** | Text sentiment analysis | pip install textblob |
+| **XGBoost** | Feature-based ML classification | pip install xgboost |
 
 ---
 
@@ -299,4 +293,4 @@ scripts/
 
 ---
 
-*This skill uses institutional-grade methods: HMM regime detection, Fractional Kelly sizing, walk-forward optimization, and HF foundation models. Test thoroughly with paper trading before live deployment.*
+*This skill uses institutional-grade methods: HMM regime detection, Fractional Kelly sizing, walk-forward optimization, and lightweight ML models (Chronos-Tiny, XGBoost, VADER). No GPU required. Test thoroughly with paper trading before live deployment.*
