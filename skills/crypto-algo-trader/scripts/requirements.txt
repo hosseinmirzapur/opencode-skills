@@ -1,0 +1,14 @@
+# Required packages for Crypto Algo Trader skill
+ccxt>=4.0.0
+pandas>=2.0.0
+numpy>=1.24.0
+scikit-learn>=1.3.0
+xgboost>=2.0.0
+torch>=2.0.0
+transformers>=4.35.0
+ta-lib>=0.4.0
+yfinance>=0.2.0
+arch>=5.0.0
+scipy>=1.11.0
+matplotlib>=3.7.0
+seaborn>=0.12.0

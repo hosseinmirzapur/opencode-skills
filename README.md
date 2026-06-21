@@ -172,6 +172,16 @@ The installer will:
 </details>
 
 <details>
+<summary><b>💰 Trading & Crypto</b> — <i>algorithmic trading, memecoin sniping, market analysis</i></summary>
+
+| Skill | What It Does |
+|-------|-------------|
+| [`crypto-algo-trader`](skills/crypto-algo-trader) | Institutional-grade algo trading with ML ensemble, regime detection, risk management |
+| [`memecoin-alpha-agent`](skills/memecoin-alpha-agent) | Aggressive memecoin sniping, alpha filtering, scalping on Solana/BSC |
+
+</details>
+
+<details>
 <summary><b>🖼️ Image & Video</b> — <i>generation, editing, templates</i></summary>
 
 | Skill | What It Does |

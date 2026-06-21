@@ -1,0 +1,63 @@
+# Crypto Algo Trader Configuration
+
+symbols:
+  - BTC/USDT
+  - ETH/USDT
+
+timeframes:
+  primary: 1h
+  secondary:
+    - 15m
+    - 4h
+
+regime:
+  hurst_threshold_trend: 0.5
+  hurst_threshold_meanrevert: 0.4
+  adx_threshold: 25
+  atr_percentile_volatile: 0.9
+
+risk:
+  kelly_fraction: 0.25  # Fractional Kelly for safety
+  max_position_percent: 5.0
+  stop_loss_atr_multipliers:
+    trending: 1.5
+    ranging: 1.0
+    volatile: 2.0
+  risk_reward_ratios:
+    high_confidence: 4.0  # 90%+
+    medium_confidence: 2.5  # 70-90%
+    low_confidence: 2.0  # 65-70%
+  
+  portfolio_limits:
+    max_open_positions: 2
+    daily_loss_limit_percent: 5.0
+    drawdown_kill_switch_percent: 15.0
+
+signals:
+  confidence_threshold: 0.65
+  minimum_agreement: 3  # Out of 5 signal generators
+  weights:
+    15m: 0.2
+    1h: 0.5
+    4h: 0.3
+
+ml_models:
+  xgboost:
+    n_estimators: 1000
+    max_depth: 6
+    learning_rate: 0.01
+  lstm:
+    sequence_length: 60
+    hidden_size: 128
+    num_layers: 2
+  tft:
+    d_model: 64
+    n_heads: 4
+    dropout: 0.1
+
+backtesting:
+  train_window_days: 60
+  test_window_days: 10
+  purge_days: 1
+  min_sharpe: 1.0
+  min_deflated_sharpe: 0.7
